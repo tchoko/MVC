@@ -1,0 +1,72 @@
+﻿@model GestStore.Models.ClientViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+        @*Model.ClientID == 0 ? "Créer un client" : "Modifier un Client";*@
+}
+
+<h1>Edit Customer</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="@Url.Action("Edit")" id="clientForm" method="post">
+            <input type="hidden" asp-for="ClientID"></input>@*
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientID" class="control-label"></label>
+                <input asp-for="ClientID" class="form-control" />
+                <span asp-validation-for="ClientID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"><b>Nom</b></label>
+                <input asp-for="Nom" class="form-control" placeholder="Entrer votre nom" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prenom" class="control-label"><b>Prénom</b></label>
+                <input asp-for="Prenom" class="form-control" placeholder="Entrer votre prénom" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cp" class="control-label"><b>Code Postal</b></label>
+                <input asp-for="Cp" class="form-control"  placeholder="Entrer le code postal"/>
+                <span asp-validation-for="Cp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Localite" class="control-label"><b>Localité</b></label>
+                <input asp-for="Localite" class="form-control" placeholder="Entrer la Loclité" />
+                <span asp-validation-for="Localite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rue" class="control-label"><b>Rue</b></label>
+                <input asp-for="Rue" class="form-control" placeholder="Entrer la Rue" />
+                <span asp-validation-for="Rue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"><b>Numéro</b></label>
+                <input asp-for="Numero" class="form-control"  placeholder="Entrer le Numéro"/>
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tel" class="control-label"><b>Téléphone</b></label>
+                <input asp-for="Tel" class="form-control" placeholder="Entrer le Téléphone"/>
+                <span asp-validation-for="Tel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<input type="submit" value="Save" class="btn btn-primary" />*@
+                <button type="button" onclick="history.go(-1)" class="btn btn-secondary">Retour</button>
+                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
